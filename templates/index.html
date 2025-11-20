@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Classifier</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        .section { margin-bottom: 30px; }
+        .images { display: flex; gap: 15px; flex-wrap: wrap; }
+        .img-box { border: 1px solid #ccc; padding: 10px; width: 150px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<h2>Upload Images to Classify Box / Non-Box</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="files" multiple required>
+    <button type="submit">Upload</button>
+</form>
+
+{% if uploaded %}
+    <div class="section">
+        <h3>Box Images</h3>
+        <div class="images">
+            {% for img in box_images %}
+            <div class="img-box">{{ img }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Non-Box Images</h3>
+        <div class="images">
+            {% for img in non_box_images %}
+            <div class="img-box">{{ img }}</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+</body>
+</html>
